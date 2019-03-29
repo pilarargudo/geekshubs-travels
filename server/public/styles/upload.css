@@ -1,0 +1,11 @@
+html, body{
+  background-color: aliceblue;
+  /* margin: 0; */ /* lo metemos con normalize.css */
+  font-size: 62.5%;
+}
+h1{
+  font-size: 2.2rem; /*22px*/
+}
+p{
+  font-size: 1.6rem; /*16px*/
+}

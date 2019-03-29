@@ -1,0 +1,21 @@
+{
+  "name": "MongoBootcamp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Pilar Argudo <pargudo@disid.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./server/public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
