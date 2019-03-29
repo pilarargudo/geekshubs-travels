@@ -38,10 +38,10 @@ app.use(router);
 // TODO mover a routes?
 
 // primera ruta para validar el renderizado de plantillas
-app.get('/hbs', (req, res) => {
+app.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
-  res.render('prueba.hbs', {
-    title: 'Usuarios',
+  res.render('home.hbs', {
+    title: 'GeeksHubs Travel',
     users: [
       {id: 1, name: 'Pilar',},
       {id: 2, name: 'Cris',},
