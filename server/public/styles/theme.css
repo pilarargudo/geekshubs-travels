@@ -12,15 +12,7 @@ p{
 /* Layout */
 
 .mdl-layout__container{
-  /* position: absolute;
-  width: 100%;
-  height: 100%; */
-  position: relative;
-  height: 800px;
-  width: auto;
   background-color: #f3f3f3;
-  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
-  background-size: cover;
 }
 
 /* Footer */
@@ -47,7 +39,10 @@ p{
   height: 100px;
 }
 .mdl-layout__header{
-  background: transparent;
+  height: 750px;
+  background-color: #f3f3f3;
+  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
+  background-size: cover;
 }
 .mdl-layout-title a{
     color: #231f20;
@@ -69,18 +64,9 @@ a.mdl-navigation__link {
 }
 
 /* Header */
-
-.banner-section {
-  /* position: relative;
-  height: 800px;
-  width: auto;
-  background-color: #f3f3f3;
-  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
-  background-size: cover; */
-}
 .slogan {
   font-size: 5rem;
-  padding-top: 5rem;
+  padding-top: 10rem;
   color: #fff;
 }
 .sub-slogan {
@@ -89,4 +75,65 @@ a.mdl-navigation__link {
   color: #fff;
 }
 
+/* Main */
 
+.mdl-layout__content{
+  background: #fff;
+}
+
+/* Cards */
+
+.demo-card-event.mdl-card {
+  width: 320px;
+  height: 320px;
+  background: #3E4EB8;
+  /* background:
+  url('../img/travels/tokyo.jpg') bottom right 15% no-repeat #46B6AC; */
+}
+.demo-card-event .mdl-card__actions {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.demo-card-event .mdl-card__title {
+  align-items: flex-start;
+  padding: 0;
+}
+.demo-card-event .mdl-card__title .mdl-grid.mdl-grid--no-spacing {
+    margin: 0;
+    width: 100%;
+}
+.demo-card-event .mdl-card__title h3 {
+  margin: 0;
+  width: 100%;
+  background: #f5dc3b;
+  padding: 0;
+  height: 6rem;
+  line-height: 6rem;
+  padding: 1rem 0 1rem 1rem;
+  color: #100633;
+  font-weight: 700;
+}
+.demo-card-event .mdl-card__title h4 {
+  margin: 0;
+  width: 100%;
+  background: #100633;
+  padding: 0;
+  height: 3rem;
+  padding: 1rem;
+  line-height: 3rem;
+}
+
+.demo-card-event .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+}
+.demo-card-event .mdl-card__actions .material-icons {
+  padding-right: 10px;
+}
+.demo-card-event  .mdl-card__title,
+.demo-card-event .mdl-card__actions,
+.demo-card-event .mdl-card__actions .mdl-button {
+  color: #fff;
+  font-size: 1.5rem;
+  width: 100%;
+}

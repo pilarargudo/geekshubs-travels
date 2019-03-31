@@ -1,24 +1,36 @@
-  <h1>Usuarios</h1>
-    <!-- para poner código siempre doble llave -->
-    {{#if users.length}}
-      {{!-- no podemos hacer un foreach sin comprobar que existen primero --}}
-      {{#each users}}
-      <p>
-        {{id}} : {{name}}
-      </p>
-      {{/each}}    
-    {{else}}
-      <p>No hay Usuarios</p>
-    {{/if}}
-  
-  <h2>Administrador</h2>
-  {{#with admin}}
-    <h3>{{name}}</h3>
-    <p>El Administrador es: {{fullname}} </p>
-    {{log "Prueba del log que hay admin"}}
+<section id="travels">
 
-  {{else}}
-      No hay administrador
-  {{/with}}
+  <div class="mdl-grid">
 
-  
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="demo-card-event mdl-card mdl-shadow--2dp" style="background:
+  url('../img/travels/tokyo.jpg') bottom right 15% no-repeat #46B6AC;">
+      {{!-- <img src="../img/travels/tokyo.jpg" alt=""> --}}
+      <div class="mdl-card__title mdl-card--expand">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--8-col">
+            <h4>
+              Ahorra 95€
+            </h4>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <h3>
+              125€
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-typography--text-center">
+          Ciudad
+        </a>
+      </div>
+</div>
+
+  </div>
+</div>
+
+
+
+
+</section>
