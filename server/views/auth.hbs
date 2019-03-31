@@ -26,22 +26,14 @@
 
       <header class="mdl-layout__header mdl-layout__header--scroll">        
         {{> navbar}}
-        {{> banner}}  
       </header>
-      
-      {{!-- {{> banner}}   --}}
 
-      <main class="mdl-layout__content">     
-        <section class="mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-layout-spacer"></div>
-          <div class="mdl-cell mdl-cell--10-col">
-              {{{body}}}
-          </div>
-          <div class="mdl-layout-spacer"></div>
-        </section>
-        <footer class="mdl-mega-footer">
+      {{{body}}}
+  
+      <footer class="mdl-mega-footer">
           {{> footer}}
-        </footer>
+      </footer>
+      
       </main> 
   </body>
 </html>

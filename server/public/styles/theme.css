@@ -34,15 +34,11 @@ p{
 }
 
 /* Navbar */
-
+header.mdl-layout__header {
+    background-color: transparent;
+}
 .mdl-layout__header-row{
   height: 100px;
-}
-.mdl-layout__header{
-  height: 750px;
-  background-color: #f3f3f3;
-  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
-  background-size: cover;
 }
 .mdl-layout-title a{
     color: #231f20;
@@ -53,6 +49,7 @@ p{
 .mdl-layout__header-row img {
   width: 190px;
   padding-top: 0.5rem;
+  position: relative;
 }
 a.mdl-navigation__link {
   font-weight: 700;
@@ -64,6 +61,15 @@ a.mdl-navigation__link {
 }
 
 /* Header */
+
+.banner-section{
+  height: 750px;
+  background-color: #f3f3f3;
+  /* background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat; */
+  background-size: cover;
+  padding-bottom: 4rem;
+  margin-top: -100px;
+}
 .slogan {
   font-size: 5rem;
   padding-top: 10rem;
@@ -73,6 +79,20 @@ a.mdl-navigation__link {
   font-size: 2rem;
   padding: 4rem 0;
   color: #fff;
+}
+
+/* Register */ 
+
+.auth{
+  padding-bottom: 4rem;
+  margin-top: -100px;
+}
+
+section#register {
+  padding: 15rem 0 0;
+}
+.auth .mdl-card{
+  width: 100%;
 }
 
 /* Main */
@@ -120,6 +140,8 @@ a.mdl-navigation__link {
   height: 3rem;
   padding: 1rem;
   line-height: 3rem;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .demo-card-event .mdl-card__actions {

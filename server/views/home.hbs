@@ -2,35 +2,37 @@
 
   <div class="mdl-grid">
 
-  <div class="mdl-cell mdl-cell--4-col">
-    <div class="demo-card-event mdl-card mdl-shadow--2dp" style="background:
-  url('../img/travels/tokyo.jpg') bottom right 15% no-repeat #46B6AC;">
-      {{!-- <img src="../img/travels/tokyo.jpg" alt=""> --}}
-      <div class="mdl-card__title mdl-card--expand">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--8-col">
-            <h4>
-              Ahorra 95€
-            </h4>
+    {{#if travels.length}}
+      {{!-- no podemos hacer un foreach sin comprobar que existen primero --}}
+      {{#each travels}}
+      <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-event mdl-card mdl-shadow--2dp" style="background:
+      url('../img/travels/{{img}}') bottom right 15% no-repeat #46B6AC;">
+          {{!-- <img src="../img/travels/tokyo.jpg" alt=""> --}}
+          <div class="mdl-card__title mdl-card--expand">
+            <div class="mdl-grid mdl-grid--no-spacing">
+              <div class="mdl-cell mdl-cell--8-col">
+                <h4>
+                  Ahorra {{discount}}€
+                </h4>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col">
+                <h3>
+                  {{price}}€
+                </h3>
+              </div>
+            </div>
           </div>
-          <div class="mdl-cell mdl-cell--4-col">
-            <h3>
-              125€
-            </h3>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-typography--text-center">
+              {{city}}
+            </a>
           </div>
         </div>
       </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-typography--text-center">
-          Ciudad
-        </a>
-      </div>
-</div>
-
+      {{/each}}    
+      {{else}}
+        <p>No hay viajes disponibles en estos momentos</p>
+      {{/if}}
   </div>
-</div>
-
-
-
-
 </section>

@@ -37,21 +37,42 @@ app.use(router);
 
 // TODO mover a routes?
 
-// primera ruta para validar el renderizado de plantillas
+// inicio
 app.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('home.hbs', {
     title: 'GeeksHubs Travels',
-    users: [
-      {id: 1, name: 'Pilar',},
-      {id: 2, name: 'Cris',},
-      {id: 3, name: 'Toni',},
+    banner: [
+      {slogan: '¡Viaja!', subslogan: 'Descubre lugares maravillosos', 
+      button: 'Ver destinos', linkButton:'#travels', 
+      imgBanner: 'nathan-anderson-316188-unsplash.jpg',}
     ],
-    admin: {
-      name: 'Iván',
-      fullname: 'Iván Ruiz'
-    },
+    travels: [
+      {id: 1, img: 'beijing.jpg', city: 'Beijing', discount: '90', price: '200'},
+      {id: 2, img: 'buenos_aires.jpg', city: 'Buenos Aires', discount: '120', price:'300' },
+      {id: 3, img: 'madrid.jpg', city: 'Madrid', discount: '85', price:'250' },
+      {id: 4, img: 'ciudad_mexico.jpg', city: 'Ciudad de México', discount: '115', price:'450' },
+      {id: 5, img: 'new_york.jpg', city: 'New York', discount: '65', price:'350' },
+      {id: 6, img: 'tokyo.jpg', city: 'Tokyo', discount: '90', price:'320' },
+    ],
     layout: 'template',
+  });
+})
+
+// registro
+app.get('/register', (req, res) => {
+  // ejecuta el archivo y lo renderiza con handlebars
+  res.render('register.hbs', {
+    title: 'GeeksHubs Travels',
+    // para layout template
+    // banner: [
+    //   {slogan: 'Registro', subslogan: '', 
+    //   button: '', linkButton:'',
+    //   imgBackground: 'travel_1.jpg',
+    //   }
+    // ],
+    imgBackground: 'travel_1.jpg',
+    layout: 'auth',
   });
 })
 
