@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="/components/material-design-lite/material.min.css">
     <script src="/components/material-design-lite/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- error de carga -->
+    <!-- bower uninstall -S fontawesome -->
+    {{!-- <link rel="scss" href="/components/fontawesome/scss/fontawesome.scss"> --}}
     <!-- ocupa mucho -->
     {{!-- <link rel="stylesheet" href="/components/material-design-icons/iconfont/material-icons.css"> --}}
 
@@ -16,8 +20,16 @@
 
   </head>
   <body>
-    {{{body}}}
-    <i class="material-icons">face</i>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__content">
+      {{> navbar}}
+      {{> banner}}
+      </header>
+
+    {{!-- {{> products}} --}}
+    {{!-- {{{body}}} --}}
+    {{!-- <i class="material-icons">face</i> --}}
     {{> footer}}
+    </div>
   </body>
 </html>

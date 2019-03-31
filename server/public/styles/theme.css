@@ -9,4 +9,84 @@ p{
   font-size: 1.6rem; 
 } */
 
-footer{}
+/* Layout */
+
+.mdl-layout__container{
+  /* position: absolute;
+  width: 100%;
+  height: 100%; */
+  position: relative;
+  height: 800px;
+  width: auto;
+  background-color: #f3f3f3;
+  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
+  background-size: cover;
+}
+
+/* Footer */
+.mdl-mega-footer {
+  background-color: #100633;
+      /* color: #9e9e9e; */
+}
+.mdl-mega-footer--heading, .mdl-mega-footer__heading{
+  font-size: 1.4rem;
+}
+.mdl-mega-footer .mdl-textfield__input{
+  border-bottom: 1px solid #9e9e9e;
+}
+.mdl-mega-footer  .mdl-textfield__label{
+  color: inherit;
+}
+.mdl-mega-footer__bottom-section {
+  border-top: 2px solid #080319;
+}
+
+/* Navbar */
+
+.mdl-layout__header-row{
+  height: 100px;
+}
+.mdl-layout__header{
+  background: transparent;
+}
+.mdl-layout-title a{
+    color: #231f20;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+.mdl-layout__header-row img {
+  width: 190px;
+  padding-top: 0.5rem;
+}
+a.mdl-navigation__link {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.social-links a.mdl-navigation__link {
+  display: inline-block;
+  padding: 0 1rem 0 0;
+}
+
+/* Header */
+
+.banner-section {
+  /* position: relative;
+  height: 800px;
+  width: auto;
+  background-color: #f3f3f3;
+  background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat;
+  background-size: cover; */
+}
+.slogan {
+  font-size: 5rem;
+  padding-top: 5rem;
+  color: #fff;
+}
+.sub-slogan {
+  font-size: 2rem;
+  padding: 4rem 0;
+  color: #fff;
+}
+
+

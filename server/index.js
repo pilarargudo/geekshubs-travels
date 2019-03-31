@@ -41,7 +41,7 @@ app.use(router);
 app.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('home.hbs', {
-    title: 'GeeksHubs Travel',
+    title: 'GeeksHubs Travels',
     users: [
       {id: 1, name: 'Pilar',},
       {id: 2, name: 'Cris',},
