@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('home.hbs', {
     title: 'Bienvenido - GeeksHubs Travels',
+    company: 'GeeksHubs Travels',
     banner: [
       {slogan: '¡Viaja!', subslogan: 'Descubre lugares maravillosos', 
       button: 'Ver destinos', linkButton:'#travels', 
@@ -65,6 +66,7 @@ app.get('/register', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('register.hbs', {
     title: 'Registro - GeeksHubs Travels',
+    company: 'GeeksHubs Travels',
     // para layout template
     // banner: [
     //   {slogan: '', subslogan: '', 
