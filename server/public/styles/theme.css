@@ -38,8 +38,13 @@ header.mdl-layout__header {
     background-color: transparent;
 }
 .mdl-layout__header-row{
-  height: 100px;
+  /* height: 100px; */
 }
+/*
+.mdl-layout__header.is-compact {
+    background: #100633;
+}*/
+
 .mdl-layout-title a{
     color: #231f20;
     text-decoration: none;
@@ -48,7 +53,7 @@ header.mdl-layout__header {
 }
 .mdl-layout__header-row img {
   width: 190px;
-  padding-top: 0.5rem;
+  padding-top: 2.5rem;
   position: relative;
 }
 a.mdl-navigation__link {
@@ -63,12 +68,12 @@ a.mdl-navigation__link {
 /* Header */
 
 .banner-section{
-  height: 750px;
-  background-color: #f3f3f3;
+  /* height: 750px; */
+  /* background-color: #f3f3f3; */
   /* background: url(../img/nathan-anderson-316188-unsplash.jpg) center 30% no-repeat; */
-  background-size: cover;
+  /* background-size: cover; */
   padding-bottom: 4rem;
-  margin-top: -100px;
+  /* margin-top: -100px; */
 }
 .slogan {
   font-size: 5rem;

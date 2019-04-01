@@ -1,8 +1,6 @@
  {{#if banner.length}}
  {{#each banner}}
-      {{!-- no podemos hacer un foreach sin comprobar que existen primero --}}
-<div class="banner-section mdl-typography--text-center" 
-     style="background: url(../img/{{imgBanner}}) center 30% no-repeat; background-size: cover;">
+<div class="banner-section mdl-typography--text-center">
   <div class="logo-font slogan">{{slogan}}</div>
   <div class="logo-font sub-slogan">{{subslogan}}</div>
    {{#if button}}

@@ -21,7 +21,7 @@ const router = require('./routes');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-// iniciamos motor de las vistas con plantilla html
+// iniciamos motor de las vistas con plantilla html con handlebars
 app.set('view engine', 'hbs');
 
 // definimos el directorio de las vistas, por defecto coge del directorio raíz
@@ -41,12 +41,13 @@ app.use(router);
 app.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('home.hbs', {
-    title: 'GeeksHubs Travels',
+    title: 'Bienvenido - GeeksHubs Travels',
     banner: [
       {slogan: '¡Viaja!', subslogan: 'Descubre lugares maravillosos', 
       button: 'Ver destinos', linkButton:'#travels', 
-      imgBanner: 'nathan-anderson-316188-unsplash.jpg',}
+      imgBanner: '',}
     ],
+    imgBackground: 'nathan-anderson-316188-unsplash.jpg',
     travels: [
       {id: 1, img: 'beijing.jpg', city: 'Beijing', discount: '90', price: '200'},
       {id: 2, img: 'buenos_aires.jpg', city: 'Buenos Aires', discount: '120', price:'300' },
@@ -63,13 +64,12 @@ app.get('/', (req, res) => {
 app.get('/register', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('register.hbs', {
-    title: 'GeeksHubs Travels',
+    title: 'Registro - GeeksHubs Travels',
     // para layout template
     // banner: [
-    //   {slogan: 'Registro', subslogan: '', 
-    //   button: '', linkButton:'',
-    //   imgBackground: 'travel_1.jpg',
-    //   }
+    //   {slogan: '', subslogan: '', 
+    //   button: '', linkButton:'', 
+    //   imgBanner: '',}
     // ],
     imgBackground: 'travel_1.jpg',
     layout: 'auth',
