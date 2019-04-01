@@ -7,7 +7,7 @@ const { pick } = require('lodash');
 // creamos nueva instancia del esquema que está almacenado en mongoose
 const UserSchema = new mongoose.Schema({
   // id viene automático por lo que no es necesario
-  name: {
+  user: {
     type: String,
     required: true,
     maxlength: 50,
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
 
   }, {
     // es el estado por defecto
-    //strict: true
+    // strict: true,
   }
 );
 
@@ -35,7 +35,8 @@ UserSchema.methods.toJSON = function(){
   const user = this;
 
     // usamos librería pick de lodash: qué objeto, qué claves queremos
-    return pick(user, ['_id', 'name', 'email']);
+    return pick(user, ['_id', 'user', 'email']);
+
 }
 
 // para mantener el mismo esquema de datos que emplea moongose lo vamos a recibir nosotros también como objeto
