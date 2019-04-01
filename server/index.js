@@ -78,6 +78,23 @@ app.get('/register', (req, res) => {
   });
 })
 
+// login
+app.get('/login', (req, res) => {
+  // ejecuta el archivo y lo renderiza con handlebars
+  res.render('login.hbs', {
+    title: 'Identifícate - GeeksHubs Travels',
+    company: 'GeeksHubs Travels',
+    // para layout template
+    // banner: [
+    //   {slogan: '', subslogan: '', 
+    //   button: '', linkButton:'', 
+    //   imgBanner: '',}
+    // ],
+    imgBackground: 'travel_1.jpg',
+    layout: 'auth',
+  });
+})
+
 app.listen(PORT,() => {
   console.log(`http://localhost:${PORT}/`)
 });
