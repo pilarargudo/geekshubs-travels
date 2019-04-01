@@ -1,0 +1,51 @@
+ {{#if contact.length}}
+ {{#each contact}}
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--6-col">
+        <img>
+      </div>
+      <div class="mdl-cell mdl-cell--6-col">
+           <h3 class="mdl-typography--text-uppercase">{{title}}</h3>
+            <p>{{text}}</p>              
+               
+            <form action="#">
+              
+              <div id="personal">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="name">
+                  <label class="mdl-textfield__label" for="name">Nombre</label>
+                </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="email">
+                    <label class="mdl-textfield__label" for="email">Email</label>
+                  </div>
+              </div>                    
+              <div id ="contact">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="phone">
+                    <label class="mdl-textfield__label" for="phone">Teléfono</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="country">
+                    <label class="mdl-textfield__label" for="country">País</label>
+                  </div>
+              </div>
+              <div>
+                  <div class="mdl-cell mdl-cell--10-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" type="text" rows= "3" id="message" ></textarea>
+                    <label class="mdl-textfield__label" for="message">Mensaje...</label>
+                  </div>                       
+              </div>
+        </form>          
+          <div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              Enviar
+            </button>
+          </div>
+
+
+      </div>
+  </div>
+
+{{/each}}
+{{/if}}

@@ -37,12 +37,20 @@
       <main class="mdl-layout__content">     
         
         <section class="mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-layout-spacer"></div>
+          <div class="mdl-layout-spacer"></div>
           <div class="mdl-cell mdl-cell--10-col">
               {{{body}}}
           </div>
           <div class="mdl-layout-spacer"></div>
         </section>
+        
+        <section id="who">
+          {{> who}}
+        </section>
+        
+        <section id="contact">
+          {{> contact}}
+        </section>        
 
         <footer class="mdl-mega-footer">
           {{> footer}}
