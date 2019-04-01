@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
     contact: [
       {
         title: 'Contacta con nosotros',
-        text: 'texto texto texto', 
+        text: 'No dudes en contactar con nosotros por cualquier duda o sugerencia.', 
       }
     ],
     layout: 'template',
@@ -82,12 +82,6 @@ app.get('/register', (req, res) => {
   res.render('register.hbs', {
     title: 'Registro - GeeksHubs Travels',
     company: 'GeeksHubs Travels',
-    // para layout template
-    // banner: [
-    //   {slogan: '', subslogan: '', 
-    //   button: '', linkButton:'', 
-    //   imgBanner: '',}
-    // ],
     imgBackground: 'travel_1.jpg',
     layout: 'auth',
   });
@@ -99,16 +93,11 @@ app.get('/login', (req, res) => {
   res.render('login.hbs', {
     title: 'Identifícate - GeeksHubs Travels',
     company: 'GeeksHubs Travels',
-    // para layout template
-    // banner: [
-    //   {slogan: '', subslogan: '', 
-    //   button: '', linkButton:'', 
-    //   imgBanner: '',}
-    // ],
     imgBackground: 'travel_1.jpg',
     layout: 'auth',
   });
 })
+
 
 app.listen(PORT,() => {
   console.log(`http://localhost:${PORT}/`)

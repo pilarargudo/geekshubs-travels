@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <!-- error de carga -->
     <!-- bower uninstall -S fontawesome -->
     {{!-- <link rel="scss" href="/components/fontawesome/scss/fontawesome.scss"> --}}
@@ -49,15 +50,26 @@
         </section>
         
         <section id="contact">
-          {{> contact}}
-        </section>        
+        <div class="mdl-grid mdl-grid--no-spacing">
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-cell mdl-cell--10-col">
+            {{> contact}}
+          </div>
+          <div class="mdl-layout-spacer"></div>
+        </div>          
+        </section>       
 
         <footer class="mdl-mega-footer">
           {{> footer}}
         </footer>
       </main>
+
       <!-- scripts -->
       <script src="/components/material-design-lite/material.min.js"></script>
+      <!-- Google Maps -->
+      <script src="/js/main.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEQifWB743nWgi8P-YsZjzfPU7HpuFNvo&callback=myMap"></script>
+      
   </body>
 </html>
 

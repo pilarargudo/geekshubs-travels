@@ -158,8 +158,18 @@ section#who .mdl-grid .mdl-cell:nth-child(2){
   padding: 2em;
 }
 
+/* Contact */
 
-
+section#contact{
+  padding: 3em 0;
+}
+section#contact .mdl-grid>.mdl-cell:nth-child(2){
+  padding-left: 0.25em;
+}
+#googleMap {
+  height: 400px; 
+  width: 100%; 
+}
 
 
 /* Auth */ 
