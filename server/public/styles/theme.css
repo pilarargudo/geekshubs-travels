@@ -94,20 +94,6 @@ a.mdl-navigation__link {
   position: relative;
 }
 
-/* Register */ 
-
-.auth{
-  padding-bottom: 4rem;
-  margin-top: -100px;
-}
-
-section#register {
-  padding: 15rem 0 0;
-}
-.auth .mdl-card{
-  width: 100%;
-}
-
 /* Main */
 
 .mdl-layout__content{
@@ -116,25 +102,23 @@ section#register {
 
 /* Cards */
 
-.demo-card-event.mdl-card {
+.travel-card-event.mdl-card {
   width: 100%;
   height: 320px;
   background: #3E4EB8;
-  /* background:
-  url('../img/travels/tokyo.jpg') bottom right 15% no-repeat #46B6AC; */
 }
-.demo-card-event .mdl-card__actions {
+.travel-card-event .mdl-card__actions {
   border-color: rgba(255, 255, 255, 0.2);
 }
-.demo-card-event .mdl-card__title {
+.travel-card-event .mdl-card__title {
   align-items: flex-start;
   padding: 0;
 }
-.demo-card-event .mdl-card__title .mdl-grid.mdl-grid--no-spacing {
+.travel-card-event .mdl-card__title .mdl-grid.mdl-grid--no-spacing {
     margin: 0;
     width: 100%;
 }
-.demo-card-event .mdl-card__title h3 {
+.travel-card-event .mdl-card__title h3 {
   margin: 0;
   background: #f5dc3b;
   height: 6rem;
@@ -145,7 +129,7 @@ section#register {
   font-weight: 700;
   text-align: center;
 }
-.demo-card-event .mdl-card__title h4 {
+.travel-card-event .mdl-card__title h4 {
   margin: 0;
   /* width: 100%; */
   background: #100633;
@@ -157,18 +141,38 @@ section#register {
   font-weight: 500;
 }
 
-.demo-card-event .mdl-card__actions {
+.travel-card-event .mdl-card__actions {
   display: flex;
   box-sizing:border-box;
   align-items: center;
 }
-.demo-card-event .mdl-card__actions .material-icons {
+.travel-card-event .mdl-card__actions .material-icons {
   padding-right: 10px;
 }
-.demo-card-event  .mdl-card__title,
-.demo-card-event .mdl-card__actions,
-.demo-card-event .mdl-card__actions .mdl-button {
+.travel-card-event  .mdl-card__title,
+.travel-card-event .mdl-card__actions,
+.travel-card-event .mdl-card__actions .mdl-button {
   color: #fff;
   font-size: 1.5rem;
   width: 100%;
+}
+
+/* Auth */ 
+
+.auth .mdl-card{
+  width: 100%;
+  background: rgba(255,255,255, 0.7);
+}
+.mdl-textfield__label {
+  color: rgba(0,0,0,.4);
+}
+.auth .mdl-card__supporting-text {
+  margin: 0 auto;
+}
+
+
+/* Register */ 
+
+section#register {
+  padding: 3em 0;
 }
