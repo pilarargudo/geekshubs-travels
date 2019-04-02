@@ -4,6 +4,9 @@ const express = require('../index.js')
 // nos traemos el modelo del esquema de usuario
 const User = require('../models/User');
 
+// nos traemos los datod de las páginas
+const homeData = require('../models/homeData');
+
 // router.get('/', (req, res) => {
 //   res.send(process.env.NODE_ENV)
 // });
@@ -70,13 +73,16 @@ router.post( '/login', function ( req, res, next ) {
           // necesitamos el if para mostrar los errores de los campos 
           // el exito/error es sobre el findOne, si no lo encuentra entonces pasará al catch
           if ( user ) {
-              res.render( 'login', { 
-                title: 'Identifícate - GeeksHubs Travels',
-                company: 'GeeksHubs Travels',
-                imgBackground: 'travel_1.jpg',
-                layout: 'auth',
-                message: 'Bienvenido ' + user.user
-              } );
+              // res.render( 'login', {
+              //   title: 'Identifícate - GeeksHubs Travels',
+              //   company: 'GeeksHubs Travels',
+              //   imgBackground: 'travel_1.jpg',
+              //   layout: 'auth',
+              //   message: 'Bienvenido ' + user.user
+              // } );
+              
+              //res.render('home.hbs', homeData + {message: 'Bienvenido'} );
+              res.render('home.hbs', homeData );
 
           } else {
               res.render( 'login', {             
