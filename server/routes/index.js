@@ -63,11 +63,7 @@ router.get('/login', (req, res) => {
   });
 })
 
-/**
- *Users Routers,
- */
-
- // ruta para leer los usuarios
+// ruta para leer los usuarios
 router.get('/users', (req, res) => {
   //petición sobre la colección de usuarios
   // find recibe las opciones de búsqueda, como queremos todos, lo pasamos vacío
@@ -81,20 +77,21 @@ router.get('/users', (req, res) => {
 });
 
 // recoger parámetros de una url para buscar
-router.get('/users/:user_id', (req, res) => {
-  //dentro de está variable con los objetos que hemos recogido
-  // pasamos la variable del id
-  User.findById(req.params.user_id)
-  .then( user => {
-    res.send(user);
-  })
-  .catch( err => {
-    res.status(500).send(err);
-  })
-})
+// router.get('/users/:user_id', (req, res) => {
+//   //dentro de está variable con los objetos que hemos recogido
+//   // pasamos la variable del id
+//   User.findById(req.params.user_id)
+//   .then( user => {
+//     res.send(user);
+//   })
+//   .catch( err => {
+//     res.status(500).send(err);
+//   })
+// })
 
+// Register
 
-
+// view
 router.get('/register', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
   res.render('register.hbs', {
@@ -105,46 +102,60 @@ router.get('/register', (req, res) => {
   });
 })
 
-// router.post('/users', (req, res) => {
+// data
 router.post('/register', (req, res) => {  
-  console.log(req.body)
+  // console.log(req.body)
+ // una vez enviamos datos desde cliente (postman, cliente, bd json): 
+  new User(req.body)
+  .save()
+  .then( user => {
+    //res.send(user);
+    //res.redirect('/register');
 
- // una vez enviamos datos desde cliente (postman, cliente, bd json):
- new User(req.body)
- .save()
- .then( user => {
-   res.send(user);
- })
- .catch( err => {
-   res.status(400).send(err);
- })  
+    // mostrar mensaaje de éxito
+    res.render('register', {
+      // ver posibilidad de no tener que repetir todos los atributos
+      title: 'Registro - GeeksHubs Travels',
+      company: 'GeeksHubs Travels',
+      imgBackground: 'travel_1.jpg',
+      layout: 'auth',
+      message: 'registro válido, ya puedes hacer login'
+    });
+
+  })
+  .catch( err => {
+      res.status(400).render('register', {
+        title: 'Registro - GeeksHubs Travels',
+        company: 'GeeksHubs Travels',
+        imgBackground: 'travel_1.jpg',
+        layout: 'auth',
+        error: 'Registro inválido, revisa los campos'
+      });
+    //res.status(400).redirect('/register');
+
+  })  
 
 });
 
+// router.post('/users/auth', async (req, res) => {
+//   try{
+//     // función definida en Users.js
+//     // aunque le pasamos todo el body, cogerá solo lo que hemos definido en la función
+//      const user = await User.findByCredentials(req.body);
+//     // tenemos que validar que se envían todos los datos
+//     if(!user)
+//       // error 401 de autentificación
+//       return res.status(401).send('Error en la autentificación');
+//     // es necesario, aunque vacío, sino se queda esperando una respuesta del servidor
+//     res.send(user);
 
-router.post('/users/auth', async (req, res) => {
-  try{
-    // función definida en Users.js
-    // aunque le pasamos todo el body, cogerá solo lo que hemos definido en la función
-     const user = await User.findByCredentials(req.body);
-    // tenemos que validar que se envían todos los datos
-    if(!user)
-      // error 401 de autentificación
-      return res.status(401).send('Error en la autentificación');
-    // es necesario, aunque vacío, sino se queda esperando una respuesta del servidor
-    res.send(user);
-
-  }catch(err){
-    // error de servidor
-    res.status(500).send(err);
+//   }catch(err){
+//     // error de servidor
+//     res.status(500).send(err);
         
-  }
+//   }
 
-  })
-
-
-
-
+//   })
 
 
 
