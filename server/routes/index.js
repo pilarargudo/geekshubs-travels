@@ -123,9 +123,9 @@ router.get('/login', (req, res) => {
 router.post( '/login', function ( req, res, next ) {
 
   console.log(req.body);
-
-  // TODO Iván lo hizo en user.js
-  User.findOne(req.body)
+  // validamos que tenemos los daros, si es vacío entrarña tambien
+  if (req.body.user && req.body.password) {
+    User.findOne(req.body)
       .then( ( user ) => {
           console.log( 'login valido', user );
           // necesitamos el if para mostrar los errores de los campos 
@@ -136,7 +136,7 @@ router.post( '/login', function ( req, res, next ) {
                 company: 'GeeksHubs Travels',
                 imgBackground: 'travel_1.jpg',
                 layout: 'auth',
-                message: 'Bienvenido!' + user.user
+                message: 'Bienvenido ' + user.user
               } );
 
           } else {
@@ -160,28 +160,16 @@ router.post( '/login', function ( req, res, next ) {
               error: 'Ups algo no ha ido bien.  vuelva intentarlo más tarde' 
             });
       } )
+  } else {
+    res.render( 'login', {             
+      error: 'No se ha enviado usuario o contraseña',
+      // TODO validar estos mensajes
+      // error: err.message
+    } );
+  }
+
+  
 } );
-
-
-// router.post('/users/auth', async (req, res) => {
-//   try{
-//     // función definida en Users.js
-//     // aunque le pasamos todo el body, cogerá solo lo que hemos definido en la función
-//      const user = await User.findByCredentials(req.body);
-//     // tenemos que validar que se envían todos los datos
-//     if(!user)
-//       // error 401 de autentificación
-//       return res.status(401).send('Error en la autentificación');
-//     // es necesario, aunque vacío, sino se queda esperando una respuesta del servidor
-//     res.send(user);
-
-//   }catch(err){
-//     // error de servidor
-//     res.status(500).send(err);
-        
-//   }
-//   })
-
 
 // para poder emplearlo:
 module.exports = router;
