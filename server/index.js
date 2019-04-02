@@ -16,7 +16,9 @@ hbs.registerPartials(`${__dirname}/views/partials`)
 // definimos que registre los  cambios en los parciales
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`)
 
-const router = require('./routes/');
+const indexRouter = require('./routes/');
+const usersRouter = require('./routes/users');
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -39,7 +41,8 @@ app.use(express.urlencoded());
 app.use('/', express.static(`${__dirname}/public`))
 
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
-app.use(router);
+app.use(indexRouter);
+app.use(usersRouter);
 
 app.listen(PORT,() => {
   console.log(`http://localhost:${PORT}/`)
