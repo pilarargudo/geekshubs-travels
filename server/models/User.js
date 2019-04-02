@@ -29,15 +29,16 @@ const UserSchema = new mongoose.Schema({
   }
 );
 
+// TODO revisar si lo uso o no, serviría como método para no repetir código en cada endpoints
+
 // volvemos a definir esté método como función
 UserSchema.methods.toJSON = function(){
-  
-  const user = this;
-
+    const user = this;
     // usamos librería pick de lodash: qué objeto, qué claves queremos
     return pick(user, ['_id', 'user', 'email']);
-
 }
+
+// TODO  revisar si lo uso o no
 
 // para mantener el mismo esquema de datos que emplea moongose lo vamos a recibir nosotros también como objeto
 // solo queremos recoger de lo que nos envíen email y password

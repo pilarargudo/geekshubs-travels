@@ -5,7 +5,19 @@
           <div class="mdl-card__title">
               <h2 class="mdl-card__title-text">Identifícate</h2>
           </div>
-          <form id="form-register" action="/users/auth" method="POST">
+          
+          <!-- validaciones desde servidor -->
+          <div class="feedback">
+                {{#if error}}
+                <div class="error">{{error}}</div>
+                {{/if}}
+
+                {{#if message}}
+                <div class="success">{{message}}</div>
+                {{/if}}
+           </div>
+
+          <form id="form-register" action="/login" method="POST">
             <div class="mdl-card__supporting-text">
               <div class=" mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" id="user"/>
@@ -22,7 +34,8 @@
 
               <div class="mdl-card__actions">
                 <div class="mdl-grid">
-                    <button class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    <button type="submit" value="login"
+                    class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                       Entrar
                     </button>
                     <div class="mdl-cell mdl-cell--6-col">

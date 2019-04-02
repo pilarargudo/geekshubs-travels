@@ -12,7 +12,6 @@ const User = require('../models/User');
  *Page Routers,
  */
 
-
 // inicio
 router.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
@@ -52,17 +51,6 @@ router.get('/', (req, res) => {
   });
 })
 
-// login
-router.get('/login', (req, res) => {
-  // ejecuta el archivo y lo renderiza con handlebars
-  res.render('login.hbs', {
-    title: 'Identifícate - GeeksHubs Travels',
-    company: 'GeeksHubs Travels',
-    imgBackground: 'travel_1.jpg',
-    layout: 'auth',
-  });
-})
-
 // ruta para leer los usuarios
 router.get('/users', (req, res) => {
   //petición sobre la colección de usuarios
@@ -76,21 +64,7 @@ router.get('/users', (req, res) => {
   })
 });
 
-// recoger parámetros de una url para buscar
-// router.get('/users/:user_id', (req, res) => {
-//   //dentro de está variable con los objetos que hemos recogido
-//   // pasamos la variable del id
-//   User.findById(req.params.user_id)
-//   .then( user => {
-//     res.send(user);
-//   })
-//   .catch( err => {
-//     res.status(500).send(err);
-//   })
-// })
-
 // Register
-
 // view
 router.get('/register', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
@@ -101,7 +75,6 @@ router.get('/register', (req, res) => {
     layout: 'auth',
   });
 })
-
 // data
 router.post('/register', (req, res) => {  
   // console.log(req.body)
@@ -111,15 +84,14 @@ router.post('/register', (req, res) => {
   .then( user => {
     //res.send(user);
     //res.redirect('/register');
-
     // mostrar mensaaje de éxito
-    res.render('register', {
-      // ver posibilidad de no tener que repetir todos los atributos
-      title: 'Registro - GeeksHubs Travels',
+    res.render('login', {
+      // TODO ver posibilidad de no tener que repetir todos los atributos
+      title: 'Identifícate - GeeksHubs Travels',
       company: 'GeeksHubs Travels',
       imgBackground: 'travel_1.jpg',
       layout: 'auth',
-      message: 'registro válido, ya puedes hacer login'
+      message: 'Registro válido, ya puedes hacer login'
     });
 
   })
@@ -129,13 +101,67 @@ router.post('/register', (req, res) => {
         company: 'GeeksHubs Travels',
         imgBackground: 'travel_1.jpg',
         layout: 'auth',
-        error: 'Registro inválido, revisa los campos'
+        //error: 'Registro inválido, revisa los campos'
+        error: err.message
       });
-    //res.status(400).redirect('/register');
-
-  })  
-
+  }) 
 });
+
+// Login
+
+// view
+router.get('/login', (req, res) => {
+  res.render('login.hbs', {
+    title: 'Identifícate - GeeksHubs Travels',
+    company: 'GeeksHubs Travels',
+    imgBackground: 'travel_1.jpg',
+    layout: 'auth',
+  });
+})
+
+// data
+router.post( '/login', function ( req, res, next ) {
+
+  console.log(req.body);
+
+  // TODO Iván lo hizo en user.js
+  User.findOne(req.body)
+      .then( ( user ) => {
+          console.log( 'login valido', user );
+          // necesitamos el if para mostrar los errores de los campos 
+          // el exito/error es sobre el findOne, si no lo encuentra entonces pasará al catch
+          if ( user ) {
+              res.render( 'login', { 
+                title: 'Identifícate - GeeksHubs Travels',
+                company: 'GeeksHubs Travels',
+                imgBackground: 'travel_1.jpg',
+                layout: 'auth',
+                message: 'Bienvenido!' + user.user
+              } );
+
+          } else {
+              res.render( 'login', {             
+                error: 'Ups! algo no ha ido bien, credenciales incorrectos',
+                // TODO validar estos mensajes
+                // error: err.message
+              } );
+
+          }
+      } )
+      .catch( ( err ) => {
+          console.log( 'login invalido', err );
+
+          res.status(500).render('login', {
+              title: 'Registro - GeeksHubs Travels',
+              company: 'GeeksHubs Travels',
+              imgBackground: 'travel_1.jpg',
+              layout: 'auth',
+              //error: err.message
+              error: 'Ups algo no ha ido bien.  vuelva intentarlo más tarde' 
+            });
+      } )
+} );
+
 
 // router.post('/users/auth', async (req, res) => {
 //   try{
@@ -154,9 +180,7 @@ router.post('/register', (req, res) => {
 //     res.status(500).send(err);
         
 //   }
-
 //   })
-
 
 
 // para poder emplearlo:

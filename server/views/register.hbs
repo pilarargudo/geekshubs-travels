@@ -5,10 +5,9 @@
           <div class="mdl-card__title">
               <h2 class="mdl-card__title-text">Registro</h2>
           </div>
-          <form id="form-register" action="/register" method="POST">
 
-            <!-- validaciones desde servidor -->
-            <div class="feedback">
+          <!-- validaciones desde servidor -->
+          <div class="feedback">
                 {{#if error}}
                 <div class="error">{{error}}</div>
                 {{/if}}
@@ -16,11 +15,9 @@
                 {{#if message}}
                 <div class="success">{{message}}</div>
                 {{/if}}
-            </div>
+           </div>
 
-
-
-
+          <form id="form-register" action="/register" method="POST">
             <div class="mdl-card__supporting-text">
               <div class=" mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" name="user" id="user"/>
