@@ -38,7 +38,7 @@ header.mdl-layout__header {
     background-color: transparent;
 }
 .mdl-layout__header-row{
-  /* height: 100px; */
+  height: 100px;
 }
 /*
 .mdl-layout__header.is-compact {
@@ -53,8 +53,12 @@ header.mdl-layout__header {
 }
 .mdl-layout__header-row img {
   width: 190px;
-  padding-top: 2.5rem;
+  /* padding-top: 2.5rem; */
   position: relative;
+}
+
+.mdl-layout__header-row .mdl-navigation{
+  justify-content: center;
 }
 a.mdl-navigation__link {
   font-weight: 700;
@@ -63,6 +67,11 @@ a.mdl-navigation__link {
 .social-links a.mdl-navigation__link {
   display: inline-block;
   padding: 0 1rem 0 0;
+  font-size: 1.5em;
+}
+.mdl-navigation__link.user-links {
+    margin-left: 2em;
+    padding: 0;
 }
 
 /* Header */
