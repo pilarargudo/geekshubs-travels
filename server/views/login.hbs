@@ -7,21 +7,21 @@
           </div>
 
           <!-- validaciones desde servidor -->
-          <div class="feedback">
-                {{#if error}}
-                <div class="error">{{error}}</div>
-                {{/if}}
-
-                {{#if message}}
-                <div class="success">{{message}}</div>
-                {{/if}}
-           </div>
-
-              <div class="alert alert-success" role="alert">
+          <!-- validaciones desde servidor -->
+          {{#if message}}
+           <div class="alert alert-success" role="alert">
                 <button type="button" class="close-alert">×</button>
                 <i class="material-icons">check</i>
-                Lorem Ipsum
-              </div>
+                {{message}}
+           </div>
+           {{/if}}
+           {{#if error}}
+                 <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close-alert">×</button>
+                    <i class="material-icons">warning</i>
+                    {{error}}
+                </div>
+           {{/if}}
 
           <form id="form-register" action="/login" method="POST">
             <div class="mdl-card__supporting-text">

@@ -7,32 +7,25 @@ function myMap() {
   }
 
 
-/* MDL alerts */  
+/* MDL ui component alerts */  
+var alert = document.querySelector(".close-alert");
 
-$(".close-alert").click(function(e){
-  $(this).parent().remove();
-  e.preventDefault();
-});
-  
+alert.addEventListener("click", function(e){
+   alert.parentElement.remove();
+   e.preventDefault();  
+  });
 
 
 // MDL toast
-// (function() {
-//   'use strict';
-//   window['counter'] = 0;
-//   var snackbarContainer = document.querySelector('#demo-toast-example');
-//   var showToastButton = document.querySelector('#demo-show-toast');
-//   showToastButton.addEventListener('click', function() {
-//     'use strict';
-//     var data = {message: 'Example Message # ' + ++counter};
-//     snackbarContainer.MaterialSnackbar.showSnackbar(data);
-//   });
-// }());
+(function() {
+  'use strict';
+  window['counter'] = 0;
+  var snackbarContainer = document.querySelector('#demo-toast-example');
+  var showToastButton = document.querySelector('#demo-show-toast');
+  showToastButton.addEventListener('click', function() {
+    'use strict';
+    var data = {message: 'Example Message # ' + ++counter};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  });
+}());
 
-
-// var notification = document.querySelector('.mdl-js-snackbar');
-// notification.MaterialSnackbar.showSnackbar(
-//   {
-//     message: 'Image Uploaded'
-//   }
-// );

@@ -4,8 +4,9 @@ const express = require('../index.js')
 // nos traemos el modelo del esquema de usuario
 const User = require('../models/User');
 
-// nos traemos los datod de las páginas
+// nos traemos los datos de las páginas
 const homeData = require('../models/homeData');
+const loginData = require('../models/loginData');
 
 // router.get('/', (req, res) => {
 //   res.send(process.env.NODE_ENV)
@@ -28,26 +29,33 @@ router.get('/users', (req, res) => {
   })
 });
 
+
 // Register data
 router.post('/register', (req, res) => {  
   // console.log(req.body)
- // una vez enviamos datos desde cliente (postman, cliente, bd json): 
   new User(req.body)
   .save()
-  .then( user => {
+  .then( user => {  
     //res.send(user);
-    //res.redirect('/register');
-    // mostrar mensaaje de éxito
-    res.render('login', {
-      // TODO ver posibilidad de no tener que repetir todos los atributos
-      title: 'Identifícate - GeeksHubs Travels',
+    // TODO para pasar mensajes de error necesito express-sessions
+    //res.redirect('/login');
+
+    // // no cambia url
+    // res.render('login.hbs', loginData );
+    res.render('register', {
+      title: 'Registro - GeeksHubs Travels',
       company: 'GeeksHubs Travels',
       imgBackground: 'travel_1.jpg',
       layout: 'auth',
       message: 'Registro válido, ya puedes hacer login'
     });
 
-  })
+      // TODO sumar mensajes
+    // res.render('login.hbs', loginData + {
+    //   message: 'Registro válido, ya puedes hacer login'
+    // });
+
+  })  
   .catch( err => {
       res.status(400).render('register', {
         title: 'Registro - GeeksHubs Travels',

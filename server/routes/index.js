@@ -3,7 +3,7 @@ const express = require('../index.js')
 
 // nos traemos los datod de las páginas
 const homeData = require('../models/homeData');
-
+const loginData = require('../models/loginData');
 /**
  *Page Routers,
  */
@@ -29,12 +29,7 @@ router.get('/register', (req, res) => {
 
 // Login  view
 router.get('/login', (req, res) => {
-  res.render('login.hbs', {
-    title: 'Identifícate - GeeksHubs Travels',
-    company: 'GeeksHubs Travels',
-    imgBackground: 'travel_1.jpg',
-    layout: 'auth',
-  });
+  res.render('login.hbs', loginData );
 })
 
 // para poder emplearlo:
