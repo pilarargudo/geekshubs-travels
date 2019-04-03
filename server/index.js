@@ -19,11 +19,9 @@ hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`)
 const indexRouter = require('./routes/');
 const usersRouter = require('./routes/users');
 
-
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
 
 // iniciamos motor de las vistas con plantilla html con handlebars
 app.set('view engine', 'hbs');
@@ -43,6 +41,17 @@ app.use('/', express.static(`${__dirname}/public`))
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
 app.use(indexRouter);
 app.use(usersRouter);
+
+// sass middleware
+var sass = require('node-sass-middleware');
+
+ app.use(
+     sass({
+         src: __dirname + '/sass',    // Input SASS files
+         dest: __dirname + '/public/', // Output CSS
+         debug: true                
+     })
+ );
 
 app.listen(PORT,() => {
   console.log(`http://localhost:${PORT}/`)
