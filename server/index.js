@@ -1,6 +1,9 @@
 // primero definimos la configuración con la variable de entorno
 require('./config');
 
+// nodemailer config
+require('./config/nodemailer.js');
+
 // nos creamos nuestro servidor de express
 const express = require('express');
 
@@ -16,6 +19,9 @@ hbs.registerPartials(`${__dirname}/views/partials`)
 // definimos que registre los  cambios en los parciales
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`)
 
+//logs
+var logger = require('morgan');
+
 const indexRouter = require('./routes/');
 const usersRouter = require('./routes/users');
 
@@ -28,6 +34,9 @@ app.set('view engine', 'hbs');
 
 // definimos el directorio de las vistas, por defecto coge del directorio raíz
 app.set('views', `${__dirname}/views`);
+
+// mostrar logs
+app.use(logger('dev'));
 
 // formateo datos en json
 app.use(express.json());

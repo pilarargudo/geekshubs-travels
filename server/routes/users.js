@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const express = require('../index.js')
+const email = require('./config/nodemailer.js');
 
 // nos traemos el modelo del esquema de usuario
 const User = require('../models/User');
@@ -37,6 +38,16 @@ router.post('/register', (req, res) => {
   .save()
   .then( user => {  
     //res.send(user);
+
+    gmail.transporter.sendMail( {
+      to: req.body.email,
+      subject: 'Registro correcto',
+      html: 'Welcome!'
+  }, ( error, info ) => {
+      console.log(error, info);
+  } );
+
+ //res.send(user);
     // TODO para pasar mensajes de error necesito express-sessions
     //res.redirect('/login');
 
