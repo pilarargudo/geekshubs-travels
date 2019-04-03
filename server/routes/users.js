@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const express = require('../index.js')
-const email = require('./config/nodemailer.js');
+const gmail = require('../config/nodemailer.js');
 
 // nos traemos el modelo del esquema de usuario
 const User = require('../models/User');
@@ -39,32 +39,23 @@ router.post('/register', (req, res) => {
   .then( user => {  
     //res.send(user);
 
+    // send email
     gmail.transporter.sendMail( {
       to: req.body.email,
       subject: 'Registro correcto',
       html: 'Welcome!'
-  }, ( error, info ) => {
-      console.log(error, info);
-  } );
+    }, ( error, info ) => {
+        console.log(error, info);
+    } );
 
- //res.send(user);
-    // TODO para pasar mensajes de error necesito express-sessions
-    //res.redirect('/login');
-
-    // // no cambia url
-    // res.render('login.hbs', loginData );
-    res.render('register', {
-      title: 'Registro - GeeksHubs Travels',
-      company: 'GeeksHubs Travels',
-      imgBackground: 'travel_1.jpg',
-      layout: 'auth',
+    // TODO no cambia la url
+    // añadimos variable message al objeto  
+    res.render('login.hbs', {
+      ...loginData,
       message: 'Registro válido, ya puedes hacer login'
-    });
-
-      // TODO sumar mensajes
-    // res.render('login.hbs', loginData + {
-    //   message: 'Registro válido, ya puedes hacer login'
-    // });
+    } );
+    // para redirect  + message: express-sessions
+    //res.redirect(301, 'http://example.com');
 
   })  
   .catch( err => {
