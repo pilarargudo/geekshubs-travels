@@ -2,8 +2,8 @@ const router = require('express').Router();
 const express = require('../index.js')
 
 // nos traemos los datod de las páginas
-const homeData = require('../models/homeData');
-const loginData = require('../models/loginData');
+const homeData = require('../constants/homeData');
+const loginData = require('../constants/loginData');
 /**
  *Page Routers,
  */

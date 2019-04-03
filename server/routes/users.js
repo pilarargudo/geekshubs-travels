@@ -6,8 +6,8 @@ const gmail = require('../config/nodemailer.js');
 const User = require('../models/User');
 
 // nos traemos los datos de las páginas
-const homeData = require('../models/homeData');
-const loginData = require('../models/loginData');
+const homeData = require('../constants/homeData');
+const loginData = require('../constants/loginData');
 
 // router.get('/', (req, res) => {
 //   res.send(process.env.NODE_ENV)
