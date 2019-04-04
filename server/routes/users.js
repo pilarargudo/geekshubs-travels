@@ -8,14 +8,11 @@ const User = require('../models/User');
 // nos traemos los datos de las páginas
 const homeData = require('../constants/homeData');
 const loginData = require('../constants/loginData');
+const registerData = require('../constants/registerData');
 
 // router.get('/', (req, res) => {
 //   res.send(process.env.NODE_ENV)
 // });
-
-/**
- *Page Routers,
- */
 
 // ruta para leer los usuarios
 // router.get('/users', (req, res) => {
@@ -60,22 +57,18 @@ router.post('/register', (req, res) => {
   })  
   .catch( err => {
       res.status(400).render('register', {
-        title: 'Registro - GeeksHubs Travels',
-        company: 'GeeksHubs Travels',
-        imgBackground: 'travel_1.jpg',
-        layout: 'auth',
-        //error: 'Registro inválido, revisa los campos'
+        ...registerData,       
         error: err.message
       });
   }) 
 });
 
 // Login data
-
 router.post( '/login', function ( req, res, next ) {
 
-  console.log(req.body);
-  // validamos que tenemos los daros, si es vacío entrarña tambien
+  //console.log(req.body);
+
+  // validamos que tenemos los datos, si es vacío entrará también
   if (req.body.user && req.body.password) {
     User.findOne(req.body)
       .then( ( user ) => {
@@ -85,9 +78,7 @@ router.post( '/login', function ( req, res, next ) {
           if ( user ) {
 
               // OPCIÓN RENDER A HOME
-              //res.render('home.hbs', homeData + {message: 'Bienvenido'} );
               //res.render('home.hbs', homeData );
-
 
               // definimos como session el user
               // TODO me da error
@@ -100,7 +91,8 @@ router.post( '/login', function ( req, res, next ) {
               res.redirect('/profile');
 
           } else {
-              res.render( 'login', {             
+              res.render( 'login', {   
+                ...loginData,          
                 error: 'Ups! algo no ha ido bien, credenciales incorrectos',
                 // TODO validar estos mensajes
                 // error: err.message
@@ -111,14 +103,12 @@ router.post( '/login', function ( req, res, next ) {
       .catch( ( err ) => {
           console.log( 'login invalido', err );
 
-          res.status(500).render('login', {
-              title: 'Registro - GeeksHubs Travels',
-              company: 'GeeksHubs Travels',
-              imgBackground: 'travel_1.jpg',
-              layout: 'auth',
+          res.status(500).render('login.hbs', {
+             ...loginData,
               //error: err.message
-              error: 'Ups algo no ha ido bien.  vuelva intentarlo más tarde' 
+              error: 'Ups algo no ha ido bien. Vuelva intentarlo más tarde' 
             });
+
       } )
   } else {
     res.render( 'login', {             

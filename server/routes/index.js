@@ -4,10 +4,7 @@ const express = require('../index.js')
 // nos traemos los datod de las páginas
 const homeData = require('../constants/homeData');
 const loginData = require('../constants/loginData');
-/**
- *Page Routers,
- */
-
+const registerData = require('../constants/registerData');
 
 // inicio
 router.get('/', (req, res) => {
@@ -15,16 +12,9 @@ router.get('/', (req, res) => {
   res.render('home.hbs', homeData );
 })
 
-
 // Register view
 router.get('/register', (req, res) => {
-  // ejecuta el archivo y lo renderiza con handlebars
-  res.render('register.hbs', {
-    title: 'Registro - GeeksHubs Travels',
-    company: 'GeeksHubs Travels',
-    imgBackground: 'travel_1.jpg',
-    layout: 'auth',
-  });
+  res.render('register.hbs', registerData );
 })
 
 
@@ -33,7 +23,7 @@ router.get('/login', (req, res) => {
   res.render('login.hbs', loginData );
 })
 
-// LOgout view
+// Logout view
 router.get('/logout', (req, res) => {
   // borramos todas las cookies
   req.session.destroy();
@@ -48,7 +38,7 @@ router.get('/profile', (req, res) => {
  if (req.session.user){
   res.render('profile.hbs', loginData );
  }  else{
-  // TODO página de error o enlace a login
+  // TODO página de error o enlace a login con el mensaje
   res.send('No estás autorizado')
  }
 
