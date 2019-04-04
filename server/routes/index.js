@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
   res.render('home.hbs', homeData );
 })
 
+
 // Register view
 router.get('/register', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
@@ -30,6 +31,28 @@ router.get('/register', (req, res) => {
 // Login  view
 router.get('/login', (req, res) => {
   res.render('login.hbs', loginData );
+})
+
+// LOgout view
+router.get('/logout', (req, res) => {
+  // borramos todas las cookies
+  req.session.destroy();
+  
+  res.redirect('/');
+})
+
+
+// Profile view
+router.get('/profile', (req, res) => {
+ // validamos que está logeado
+ if (req.session.user){
+  res.render('profile.hbs', loginData );
+ }  else{
+  // TODO página de error o enlace a login
+  res.send('No estás autorizado')
+ }
+
+
 })
 
 // para poder emplearlo:

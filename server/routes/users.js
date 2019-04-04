@@ -18,17 +18,17 @@ const loginData = require('../constants/loginData');
  */
 
 // ruta para leer los usuarios
-router.get('/users', (req, res) => {
-  //petición sobre la colección de usuarios
-  // find recibe las opciones de búsqueda, como queremos todos, lo pasamos vacío
-  User.find({})
-  .then( users => {
-    res.send(users);
-  })
-  .catch( err => {
-    res.status(500).send(err);
-  })
-});
+// router.get('/users', (req, res) => {
+//   //petición sobre la colección de usuarios
+//   // find recibe las opciones de búsqueda, como queremos todos, lo pasamos vacío
+//   User.find({})
+//   .then( users => {
+//     res.send(users);
+//   })
+//   .catch( err => {
+//     res.status(500).send(err);
+//   })
+// });
 
 
 // Register data
@@ -48,7 +48,7 @@ router.post('/register', (req, res) => {
         console.log(error, info);
     } );
 
-    // TODO no cambia la url
+    // TODO no cambia la url, pero en el redirect no puedo mandarle mensajes
     // añadimos variable message al objeto  
     res.render('login.hbs', {
       ...loginData,
@@ -83,16 +83,21 @@ router.post( '/login', function ( req, res, next ) {
           // necesitamos el if para mostrar los errores de los campos 
           // el exito/error es sobre el findOne, si no lo encuentra entonces pasará al catch
           if ( user ) {
-              // res.render( 'login', {
-              //   title: 'Identifícate - GeeksHubs Travels',
-              //   company: 'GeeksHubs Travels',
-              //   imgBackground: 'travel_1.jpg',
-              //   layout: 'auth',
-              //   message: 'Bienvenido ' + user.user
-              // } );
-              
+
+              // OPCIÓN RENDER A HOME
               //res.render('home.hbs', homeData + {message: 'Bienvenido'} );
-              res.render('home.hbs', homeData );
+              //res.render('home.hbs', homeData );
+
+
+              // definimos como session el user
+              // TODO me da error
+              // TODO no deberíamos pasar el pass, emplear lodash.pick
+              req.session.user = user;
+
+              console.log(user);
+
+              // redirigimos a perfil de usuario
+              res.redirect('/profile');
 
           } else {
               res.render( 'login', {             

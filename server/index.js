@@ -22,8 +22,13 @@ hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`)
 //logs
 var logger = require('morgan');
 
-const indexRouter = require('./routes/');
+const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
+
+const PORT = process.env.PORT || 3000;
+
+const app = express();
+
 
 var session = require('express-session');
 
@@ -39,14 +44,6 @@ app.use(session({
   saveUninitialized: true
   }));
 
-
-
-
-
-
-const PORT = process.env.PORT || 3000;
-
-const app = express();
 
 // iniciamos motor de las vistas con plantilla html con handlebars
 app.set('view engine', 'hbs');
@@ -80,6 +77,7 @@ var sass = require('node-sass-middleware');
          debug: true                
      })
  );
+
 
 app.listen(PORT,() => {
   console.log(`http://localhost:${PORT}/`)
