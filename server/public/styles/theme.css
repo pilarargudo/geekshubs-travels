@@ -12,7 +12,7 @@ p{
 /* Layout */
 
 .mdl-layout__container{
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 
 /* Footer */
@@ -99,12 +99,6 @@ a.mdl-navigation__link {
   width: 120px;
   padding-top: 2.5rem;
   position: relative;
-}
-
-/* Main */
-
-.mdl-layout__content{
-  background: #fff;
 }
 
 /* Cards travels  */
@@ -198,13 +192,29 @@ section#contact .mdl-grid>.mdl-cell:nth-child(2){
 
 
 /* Register */ 
-
+section#profile,
 section#register {
   padding: 3em 0;
 }
 
 /* Profile */
 
-body.profile{
-
+body.profile .profile-ribbon {
+  width: 100%;
+  height: 60vh;
+  background-color: #3F51B5;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+body.profile .mdl-layout__content {
+  margin-top: -55vh;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  /* background in ribbon */
+  background: none !important;
+}
+body.profile.auth .mdl-card {
+    background: rgba(255,255,255, 1);
 }
