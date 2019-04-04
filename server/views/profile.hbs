@@ -1,12 +1,10 @@
-<section id="register" class="mdl-grid mdl-grid--no-spacing">
+<section id="profile" class="mdl-grid mdl-grid--no-spacing">
    <div class="mdl-layout-spacer"></div>
-  <figure class="mdl-cell mdl-cell--6-col">
+  <figure class="mdl-cell mdl-cell--8-col">
       <div class="mdl-card mdl-shadow--6dp">
           <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">Profile</h2>
+              <h2 class="mdl-card__title-text">¡Hola {{user}}</h2>
           </div>
-          
-
           <!-- validaciones desde servidor -->
           {{#if message}}
            <div class="alert alert-success" role="alert">
@@ -23,16 +21,10 @@
                 </div>
            {{/if}}
 
-
-            <!-- demo show toast -->
-              {{!-- <button id="demo-show-toast" 
-                  class="mdl-button mdl-js-button mdl-button--raised" 
-                      type="button">Show Toast</button> --}}
-
           <form id="form-profile" action="/profile" method="POST">
             <div class="mdl-card__supporting-text">
               <div class=" mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" name="user" id="user"/>
+                  <input class="mdl-textfield__input" name="user" id="user" value=""/>
                   <label class="mdl-textfield__label" for="user">Usuario</label>
               </div>
               <!--- type email para validación en cliente -->
@@ -51,20 +43,13 @@
                   <input class="mdl-textfield__input" type="password" name="repeat-password" id="repeat-password"/>
                   <label class="mdl-textfield__label" for="repeat-password">Repite contraseña</label>
               </div>
-              <!-- MDL Default State CheckBox 1--> 
-              <label class="mdl-cell mdl-cell--12-col mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="android">
-                <input type="checkbox" name="android" id="android" class="mdl-checkbox__input" />
-                <span class="mdl-checkbox__label">Acepto los términos y condiciones, así como la política de privacidad</span> <!-- Checkbox Label -->
-              </label>
+              
               <div class="mdl-card__actions">
                     <div class="mdl-grid">
                         <button type="submit"
                         class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                            Enviar
-                        </button>
-                        <div class="mdl-cell mdl-cell--12-col">
-                            <a href="/login" class="mdl-color-text--primary">¿Ya estás registrado?</a>
-                        </div>                  
+                            Guardar
+                        </button>                                      
                     </div>
               </div>
             </div>
