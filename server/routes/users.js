@@ -72,20 +72,13 @@ router.post( '/login', function ( req, res, next ) {
   if (req.body.user && req.body.password) {
     User.findOne(req.body)
       .then( ( user ) => {
-          console.log( 'login valido', user );
+          // console.log( 'login valido', user );
           // necesitamos el if para mostrar los errores de los campos 
           // el exito/error es sobre el findOne, si no lo encuentra entonces pasará al catch
           if ( user ) {
 
-              // OPCIÓN RENDER A HOME
-              //res.render('home.hbs', homeData );
-
-              // definimos como session el user
-              // TODO me da error
-              // TODO no deberíamos pasar el pass, emplear lodash.pick
-              req.session.user = user;
-
-              console.log(user);
+              // definimos como session el user, no pasamos el pass, empleamos el lodash.pick
+              req.session.user = user;              
 
               // redirigimos a perfil de usuario
               res.redirect('/profile');
@@ -106,7 +99,7 @@ router.post( '/login', function ( req, res, next ) {
           res.status(500).render('login.hbs', {
              ...loginData,
               //error: err.message
-              error: 'Ups algo no ha ido bien. Vuelva intentarlo más tarde' 
+              error: 'Ups algo no ha ido bien. Vuelva intentarlo más tarde.' 
             });
 
       } )

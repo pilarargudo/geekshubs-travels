@@ -9,40 +9,65 @@ const registerData = require('../constants/registerData');
 // inicio
 router.get('/', (req, res) => {
   // ejecuta el archivo y lo renderiza con handlebars
-  res.render('home.hbs', homeData );
+  res.render('home.hbs', {
+    ...homeData,
+    user: req.session.user
+   } );
 })
 
 // Register view
 router.get('/register', (req, res) => {
-  res.render('register.hbs', registerData );
-})
 
+  if (req.session.user){    
+    res.redirect('/profile');
+  }
+  else{
+    res.render('register.hbs', registerData );
+  }
+
+})
 
 // Login  view
 router.get('/login', (req, res) => {
-  res.render('login.hbs', loginData );
+
+  if (req.session.user){    
+    res.redirect('/profile');
+  }
+  else{
+    res.render('login.hbs', loginData );
+  }
+ 
 })
 
 // Logout view
 router.get('/logout', (req, res) => {
   // borramos todas las cookies
-  req.session.destroy();
-  
+  req.session.destroy();  
   res.redirect('/');
 })
 
 
 // Profile view
 router.get('/profile', (req, res) => {
- // validamos que está logeado
- if (req.session.user){
-  res.render('profile.hbs', loginData );
- }  else{
-  // TODO página de error o enlace a login con el mensaje
-  res.send('No estás autorizado')
- }
-
-
+  // validamos que está logeado
+  if (req.session.user){
+    
+    res.render('profile.hbs', {
+      ...loginData,
+      // class para el body
+      page: 'profile',
+      // sobrescribo atributo
+      title: 'Tu perfil - GeeksHubs Travels',
+      user: req.session.user,
+     } );
+  }
+  else{
+    // enlace a login con el mensaje
+    res.render('login.hbs',{
+     ...loginData,
+      message: 'Por favor, inicia sesión para acceder a tu perfil'
+    });
+  }
 })
 
 // para poder emplearlo:

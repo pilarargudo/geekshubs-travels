@@ -25,11 +25,12 @@
             <a class="mdl-navigation__link" href=""><i class="fab fa-linkedin"></i></a>
             <a class="mdl-navigation__link" href=""><i class="fab fa-youtube-square"></i></a>
             <div class="mdl-navigation__link user-links">
+              
+              {{#if user}}
+                <span>{{user.user}}</span>
+              {{/if}}
+
               <!-- Rich Tooltip -->
-
-              <!-- TODO user login -->
-              {{!-- <span>Bienvenido {{user}}</span> --}}
-
               <div id="tt3" class="icon material-icons">person</div>
               <div class="mdl-tooltip" data-mdl-for="tt3">
               Accede como usuario 
@@ -42,8 +43,16 @@
               <i class="material-icons">more_vert</i>
             </button>
             <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-              <li class="mdl-menu__item"><a href="login">Identificarme</a></li>
-              <li class="mdl-menu__item"><a href="register">Registrarme</a></li>
+              <!-- TODO solo visible si no está logeado -->
+              {{#if user}}
+                <li class="mdl-menu__item"><a href="profile">Modificar a mi perfil</a></li>
+                <li class="mdl-menu__item"><a href="logout">Salir</a></li>
+              {{else}}
+                <li class="mdl-menu__item"><a href="login">Identificarme</a></li>
+                <li class="mdl-menu__item"><a href="register">Registrarme</a></li>
+              {{/if}}
+
+               
             </ul>
     </div> 
         <!-- TODO buscador -->

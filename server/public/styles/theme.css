@@ -208,13 +208,39 @@ body.profile .profile-ribbon {
   flex-shrink: 0;
 }
 body.profile .mdl-layout__content {
-  margin-top: -55vh;
+  margin-top: -25vh;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   /* background in ribbon */
   background: none !important;
+  overflow: visible;
 }
 body.profile.auth .mdl-card {
     background: rgba(255,255,255, 1);
+}
+
+.card-image {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-image .big-icon {
+  margin-top: -150px;
+}
+
+.card-image .big-icon img {
+  width: 300px;
+  height: 300px;
+  /* background: url(../img/avatar.jpg) center center;
+  background-size: cover;
+  background-position: center; */
+    border-radius: 50%;
+  border: 2px solid white;
+}
+
+.profile.auth .mdl-card {
+  overflow: visible;
 }
