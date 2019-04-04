@@ -15,30 +15,25 @@
     <link rel="stylesheet" type="text/css" href="/styles/ui-md-alerts.css">
 
   </head>
-  <body class="auth">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <body class="auth {{page}}">
+    <div class="mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--waterfall"
               style="background: url(../img/{{imgBackground}}) center 0 no-repeat; background-size: cover;">
         <div class="mdl-layout__header-row mdl-layout--large-screen-only">
         {{> navbar}}
-        </div>
-          {{> banner}}
-          <!-- IMPORTANT: contenido dentro del header, principal diferencia de layout -->
-           {{!-- {{{body}}} --}}
+        </div>        
       </header>
       
       <!-- Drawer -->
       <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             {{> navbar}}
       </div>
-      <!-- NOTA: siempre necesitamo el main con este class para que se muestre el drawer -->
-      <!-- NOTA: hago encajar la imagen -->
+      <!-- NOTA: siempre necesitamos el main con este class para que se muestre el drawer -->
       <main class="mdl-layout__content"
-       style="background: url(../img/{{imgBackground}}) center -65px no-repeat; background-size: cover;">       
-
+       style="background: url(../img/{{imgBackground}}) center -100px no-repeat; background-size: cover;">       
+        
         {{{body}}}
         
-
         <footer class="mdl-mega-footer">
 
           <!-- TOAST validation messages -->

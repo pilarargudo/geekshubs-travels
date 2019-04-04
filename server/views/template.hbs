@@ -23,21 +23,27 @@
 
   </head>
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+     {{!-- mdl-layout--fixed-header mdl-layout__header--scroll --}}
+    <div class="mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--waterfall"
-              style="background: url(../img/{{imgBackground}}) center 30% no-repeat; background-size: cover;">
+              style="background: url(../img/{{imgBackground}}) center 4% no-repeat; background-size: cover;">
         <div class="mdl-layout__header-row mdl-layout--large-screen-only">
         {{> navbar}}
         </div>
-            {{> banner}}
+        
       </header>
-      
+
        <!-- Drawer -->
       <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             {{> navbar}}
       </div>
       
-      <main class="mdl-layout__content">     
+      <!-- Todo lo que esté aquí no estará fijo con mdl header -->
+      <main class="mdl-layout__content"> 
+
+        <div style="background: url(../img/{{imgBackground}}) center 25% no-repeat; background-size: cover;">        
+        {{> banner}}
+        </div>    
         
         <section class="mdl-grid mdl-grid--no-spacing">
           <div class="mdl-layout-spacer"></div>

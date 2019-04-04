@@ -40,6 +40,9 @@ header.mdl-layout__header {
 .mdl-layout__header-row{
   height: 100px;
 }
+.mdl-layout__header.is-compact {
+  max-height: 100px;
+}
 /*
 .mdl-layout__header.is-compact {
     background: #100633;
@@ -180,7 +183,6 @@ section#contact .mdl-grid>.mdl-cell:nth-child(2){
   width: 100%; 
 }
 
-
 /* Auth */ 
 
 .auth .mdl-card{
@@ -199,4 +201,10 @@ section#contact .mdl-grid>.mdl-cell:nth-child(2){
 
 section#register {
   padding: 3em 0;
+}
+
+/* Profile */
+
+body.profile{
+
 }
