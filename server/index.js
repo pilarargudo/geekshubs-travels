@@ -25,6 +25,25 @@ var logger = require('morgan');
 const indexRouter = require('./routes/');
 const usersRouter = require('./routes/users');
 
+var session = require('express-session');
+
+//Gestión de la sesión.
+app.use(session({
+  // Clave con la que se va a firmar el ID de las cookies
+  secret: '1234',
+  // Nombre de la cookie
+  name: 'register-demo',
+  // Si se debe reguardar el objeto completo o no en cada petición.
+  resave: true,
+  // Si la sesión se debe guardar al crearla aunque no la modifiquemos.
+  saveUninitialized: true
+  }));
+
+
+
+
+
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
