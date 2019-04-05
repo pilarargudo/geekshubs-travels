@@ -76,21 +76,18 @@ router.post( '/login', function ( req, res, next ) {
           // necesitamos el if para mostrar los errores de los campos 
           // el exito/error es sobre el findOne, si no lo encuentra entonces pasará al catch
           if ( user ) {
-
               // definimos como session el user, no pasamos el pass, empleamos el lodash.pick
-              req.session.user = user;              
-
+              req.session.user = user;             
               // redirigimos a perfil de usuario
               res.redirect('/profile');
-
           } else {
               res.render( 'login', {   
                 ...loginData,          
                 error: 'Ups! algo no ha ido bien, credenciales incorrectos',
-                // TODO validar estos mensajes
+                // TODO ¿es posible enviar estos mensajes? o solo en el catch como en register?
+                // revisar resto de login
                 // error: err.message
               } );
-
           }
       } )
       .catch( ( err ) => {
@@ -104,10 +101,11 @@ router.post( '/login', function ( req, res, next ) {
 
       } )
   } else {
-    res.render( 'login', {             
+    console.log( 'login invalido desde el else');
+
+    res.render( 'login.hbs', {  
+      ...loginData, 
       error: 'No se ha enviado usuario o contraseña',
-      // TODO validar estos mensajes
-      // error: err.message
     } );
   }
 
