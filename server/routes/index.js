@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const express = require('../index.js')
-
-const upload = require( '../config/multer' );
+//const express = require('../index.js')
 
 // nos traemos los datod de las páginas
 const homeData = require('../constants/homeData');
@@ -47,58 +45,6 @@ router.get('/logout', (req, res) => {
   req.session.destroy();  
   res.redirect('/');
 })
-
-
-// Profile view
-router.get('/profile', (req, res) => {
-  // validamos que está logeado
-  if (req.session.user){
-    
-    res.render('profile.hbs', {
-      ...loginData,
-      // class para el body
-      page: 'profile',
-      // sobrescribo atributo
-      title: 'Tu perfil - GeeksHubs Travels',
-      user: req.session.user,
-     } );
-  }
-  else{
-    // enlace a login con el mensaje
-    res.render('login.hbs',{
-     ...loginData,
-      message: 'Por favor, inicia sesión para acceder a tu perfil'
-    });
-  }
-})
-
-// upload image profile
-router.post( '/profile/', upload.single( 'file' ), function ( req, res, next ) {
-
-  if ( !req.file ) {
-    res.render('profile.hbs', {
-      ...loginData,
-      // class para el body
-      page: 'profile',
-      // sobrescribo atributo
-      title: 'Tu perfil - GeeksHubs Travels',
-      error: 'la foto debe ser png',
-      user: req.session.user,
-     } );
-  } else {
-      res.render('profile.hbs', {
-        ...loginData,
-        // class para el body
-        page: 'profile',
-        // sobrescribo atributo
-        title: 'Tu perfil - GeeksHubs Travels',
-        message: 'Foto subida',
-        user: req.session.user,
-       } );
-
-  }
-
-} );
 
 
 // para poder emplearlo:

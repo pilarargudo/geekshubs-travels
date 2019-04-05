@@ -26,6 +26,7 @@ var logger = require('morgan');
 
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
+const profileRouter = require('./routes/profile');
 
 const PORT = process.env.PORT || 3000;
 
@@ -79,12 +80,10 @@ app.use(express.urlencoded());
 // acceso a los recursos estáticos
 app.use('/', express.static(`${__dirname}/public`))
 
-// TODO multer acceso público
-//app.use('/files' , express.static(path.join(__dirname, 'uploads')));
-
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
 app.use(indexRouter);
 app.use(usersRouter);
+app.use(profileRouter);
 
 
 app.listen(PORT,() => {
