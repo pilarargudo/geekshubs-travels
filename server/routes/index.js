@@ -72,25 +72,33 @@ router.get('/profile', (req, res) => {
   }
 })
 
-
-// gatos
-router.get( '/nuevoGato', function ( req, res, next ) {
-
-  res.render( 'upload' )
-
-} );
-router.post( '/nuevoGato', upload.single( 'file' ), function ( req, res, next ) {
+// upload image profile
+router.post( '/profile/', upload.single( 'file' ), function ( req, res, next ) {
 
   if ( !req.file ) {
-      res.render( 'upload', { message: 'la foto debe ser png' } )
-
+    res.render('profile.hbs', {
+      ...loginData,
+      // class para el body
+      page: 'profile',
+      // sobrescribo atributo
+      title: 'Tu perfil - GeeksHubs Travels',
+      error: 'la foto debe ser png',
+      user: req.session.user,
+     } );
   } else {
-      res.render( 'upload', { message: 'Foto subida!' } )
+      res.render('profile.hbs', {
+        ...loginData,
+        // class para el body
+        page: 'profile',
+        // sobrescribo atributo
+        title: 'Tu perfil - GeeksHubs Travels',
+        message: 'Foto subida',
+        user: req.session.user,
+       } );
 
   }
 
 } );
-
 
 
 // para poder emplearlo:

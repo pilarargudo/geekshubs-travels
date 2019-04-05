@@ -46,8 +46,6 @@ resave: true,
 saveUninitialized: true
 }));
 
-
-
 // sass middleware
 //var express = require('express');
 var sassMiddleware = require('node-sass-middleware');
@@ -62,8 +60,6 @@ app.use(sassMiddleware({
 }));
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
-
-
 
 // iniciamos motor de las vistas con plantilla html con handlebars
 app.set('view engine', 'hbs');
@@ -83,8 +79,8 @@ app.use(express.urlencoded());
 // acceso a los recursos estáticos
 app.use('/', express.static(`${__dirname}/public`))
 
-// multer acceso público
-app.use('/files' , express.static(path.join(__dirname, 'uploads')));
+// TODO multer acceso público
+//app.use('/files' , express.static(path.join(__dirname, 'uploads')));
 
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
 app.use(indexRouter);

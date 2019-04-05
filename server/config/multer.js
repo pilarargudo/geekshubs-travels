@@ -3,7 +3,7 @@ const Multer = require( 'multer' );
 const options = {
     storage: Multer.diskStorage( {
         destination: ( req, file, callback ) => {
-            callback(null, 'server/uploads');
+            callback(null, 'server/public/img/uploads');
 
         },
         filename: ( req, file, callback ) => {
