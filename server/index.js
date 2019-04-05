@@ -7,6 +7,8 @@ require('./config/nodemailer.js');
 // nos creamos nuestro servidor de express
 const express = require('express');
 
+var path = require('path');
+
 // todo el servidor tendrá está librería Handlebars para gestión de plantillas html
 const hbs = require('hbs');
 
@@ -49,7 +51,6 @@ saveUninitialized: true
 // sass middleware
 //var express = require('express');
 var sassMiddleware = require('node-sass-middleware');
-var path = require('path');
 //var app = express();
 app.use(sassMiddleware({
     /* Options */
@@ -81,8 +82,9 @@ app.use(express.urlencoded());
 
 // acceso a los recursos estáticos
 app.use('/', express.static(`${__dirname}/public`))
-// sass middleware
-//app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// multer acceso público
+app.use('/files' , express.static(path.join(__dirname, 'uploads')));
 
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
 app.use(indexRouter);

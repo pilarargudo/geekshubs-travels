@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const express = require('../index.js')
 
+const upload = require( '../config/multer' );
+
 // nos traemos los datod de las páginas
 const homeData = require('../constants/homeData');
 const loginData = require('../constants/loginData');
@@ -69,6 +71,27 @@ router.get('/profile', (req, res) => {
     });
   }
 })
+
+
+// gatos
+router.get( '/nuevoGato', function ( req, res, next ) {
+
+  res.render( 'upload' )
+
+} );
+router.post( '/nuevoGato', upload.single( 'file' ), function ( req, res, next ) {
+
+  if ( !req.file ) {
+      res.render( 'upload', { message: 'la foto debe ser png' } )
+
+  } else {
+      res.render( 'upload', { message: 'Foto subida!' } )
+
+  }
+
+} );
+
+
 
 // para poder emplearlo:
 module.exports = router;
