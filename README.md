@@ -37,13 +37,13 @@ Por ello nos hemos puesto en contacto con un diseñador y nos han pasado el sigu
 
 - flexbox
 - express
--- express-sessions
+- express-sessions
 - mongoose
 - lodash
 - morgan
 - bower
--- [Material Design Components in HTML/CSS/JS](https://github.com/google/material-design-lite)
+  - [Material Design Components in HTML/CSS/JS](https://github.com/google/material-design-lite)
 - handlebars
-- node-sass-middleware
+- node-sass-middleware https://github.com/sass/node-sass-middleware
 - nodemailer
 

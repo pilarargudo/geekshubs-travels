@@ -244,3 +244,8 @@ body.profile.auth .mdl-card {
 .profile.auth .mdl-card {
   overflow: visible;
 }
+.profile.auth .mdl-card .card-image .mdl-button{
+    position: absolute;
+    margin-top: 50px;
+    left: 59%;
+}
