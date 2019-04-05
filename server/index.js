@@ -34,15 +34,34 @@ var session = require('express-session');
 
 //Gestión de la sesión.
 app.use(session({
-  // Clave con la que se va a firmar el ID de las cookies
-  secret: '1234',
-  // Nombre de la cookie
-  name: 'register-demo',
-  // Si se debe reguardar el objeto completo o no en cada petición.
-  resave: true,
-  // Si la sesión se debe guardar al crearla aunque no la modifiquemos.
-  saveUninitialized: true
-  }));
+// Clave con la que se va a firmar el ID de las cookies
+secret: '1234',
+// Nombre de la cookie
+name: 'register-demo',
+// Si se debe reguardar el objeto completo o no en cada petición.
+resave: true,
+// Si la sesión se debe guardar al crearla aunque no la modifiquemos.
+saveUninitialized: true
+}));
+
+
+
+// sass middleware
+//var express = require('express');
+var sassMiddleware = require('node-sass-middleware');
+var path = require('path');
+//var app = express();
+app.use(sassMiddleware({
+    /* Options */
+    src: path.join(__dirname, 'sass'),
+    dest: path.join(__dirname, 'public/styles'),
+    debug: true,
+    outputStyle: 'compressed',
+    prefix:  '/styles'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
+// Note: you must place sass-middleware *before* `express.static` or else it will
+// not work.
+
 
 
 // iniciamos motor de las vistas con plantilla html con handlebars
@@ -62,21 +81,12 @@ app.use(express.urlencoded());
 
 // acceso a los recursos estáticos
 app.use('/', express.static(`${__dirname}/public`))
+// sass middleware
+//app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // cuando alguien haga una petición le indicamos que pase por router, si este responde se le envía a cliente
 app.use(indexRouter);
 app.use(usersRouter);
-
-// sass middleware
-var sass = require('node-sass-middleware');
-
- app.use(
-     sass({
-         src: __dirname + '/sass',    // Input SASS files
-         dest: __dirname + '/public/', // Output CSS
-         debug: true                
-     })
- );
 
 
 app.listen(PORT,() => {
