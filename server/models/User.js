@@ -23,17 +23,17 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 1
   },
-  image: {
-    type: String,
-  }, 
+  image: { 
+    data: Buffer, 
+    type: String
+  },
+
 
   }, {
     // es el estado por defecto
     // strict: true,
   }
 );
-
-// TODO revisar si lo uso o no, serviría como método para no repetir código en cada endpoints
 
 // volvemos a definir esté método como función
 UserSchema.methods.toJSON = function(){
@@ -43,7 +43,6 @@ UserSchema.methods.toJSON = function(){
 }
 
 // TODO  revisar si lo uso o no
-
 // para mantener el mismo esquema de datos que emplea moongose lo vamos a recibir nosotros también como objeto
 // solo queremos recoger de lo que nos envíen email y password
 UserSchema.statics.findByCredentials = ({ email, password }) => {

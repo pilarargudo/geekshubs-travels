@@ -31,60 +31,6 @@ router.get('/profile', (req, res) => {
   }
 })
 
-// upload image profile
-router.post( '/profile', upload.single( 'image' ), function ( req, res, next ) {
-
-  // validamos que está logeado
-  if (req.session.user){
-
-    if ( !req.file ) {
-      res.render('profile.hbs', {
-        ...loginData,
-        // class para el body
-        page: 'profile',
-        // sobrescribo atributo
-        title: 'Tu perfil - GeeksHubs Travels',
-        error: 'la foto debe ser png',
-        user: req.session.user,
-       } );
-    } else {
-
-      console.log(req.file) // to see what is returned to you
-      const image = {};
-      image.url = req.file.url;
-      image.id = req.file.public_id;
-      image.path = req.file.path;
-      image.originalname = req.file.originalname;
-
-      User.create(image) // save image information in database
-    .then(newImage => res.json(newImage))
-    .catch(err => console.log(err));
-
-        res.render('profile.hbs', {
-          ...loginData,
-          // class para el body
-          page: 'profile',
-          // sobrescribo atributo
-          title: 'Tu perfil - GeeksHubs Travels',
-          message: 'Foto subida',
-          user: req.session.user,
-          // de este modo se muestra pero no se guarda
-          file: image.originalname
-         } );
-    }
-    
-
-  }
-  else{
-    res.render('login.hbs',{
-     ...loginData,
-      message: 'Por favor, inicia sesión para acceder a tu perfil'
-    });
-  }
-
-} );
-
-
 
 // para poder emplearlo:
 module.exports = router;

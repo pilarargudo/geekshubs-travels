@@ -5,12 +5,12 @@
 
         <div class="card-image">
             <div class="big-icon">
-                {{!-- <img alt="Imagen de perfil" class="" src="../img/female.jpg"> --}}
-                <img alt="Imagen de perfil" class="" src="{{imageUrl}}">
+                <img alt="Imagen de perfil" class="" src="../img/female.jpg">
+                {{!-- <img alt="Imagen de perfil" class="" src="{{imageUrl}}"> --}}
                 
             </div>
         
-            <form class="profile-img" action="/profile/" method="POST" enctype="multipart/form-data">
+            <form class="profile-img" action="/profile/photo" method="POST" enctype="multipart/form-data">
                 <label class="input-custom-file mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                     <i class="material-icons">edit</i>
                     <input type="file" name="image" onchange='this.form.submit();'>
@@ -19,7 +19,7 @@
         </div>
 
         <!-- // de este modo se muestra pero no se guarda -->
-        <img alt="Imagen de perfil" class="" src="http://localhost:3000/img/uploads/{{file}}">
+        {{!-- <img alt="Imagen de perfil" class="" src="http://localhost:3000/img/uploads/{{file}}"> --}}
 
         <!-- validaciones desde servidor -->
           {{#if message}}
