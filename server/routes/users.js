@@ -107,10 +107,60 @@ router.post( '/login', function ( req, res, next ) {
       ...loginData, 
       error: 'No se ha enviado usuario o contraseña',
     } );
-  }
+  } 
 
-  
+});
+
+// recovery con param email optativo
+router.get( '/recovery/:email?', function ( req, res, next ) {
+
+  res.render( 'recovery', { 
+    ...loginData, 
+    email: req.params.email 
+  } );
 } );
+
+router.post( '/recovery/', function ( req, res, next ) {
+
+  //winston.info( 'email to recovery:', req.body.email );
+
+  User.findOne( { email: req.body.email } ).then(
+      ( user ) => {
+          
+          if ( !user ) {
+            res.render( 'recovery', { 
+              ...loginData, 
+              error: 'Ups! Por favor, revisa tu correo electrónico.' 
+            } );
+          }
+          else{
+            // TODO redirect home y mostrar mensaje en el toast
+            res.render( 'recovery', { 
+              ...loginData, 
+              message: 'Si el email estaba registrado le enviaremos un email con su contraseña.' 
+            } );
+
+            gmail.transporter.sendMail( {
+                  to: req.body.email,
+                  subject: 'Recuperar contraseña',
+                  html: `
+                        <h4>Tu contraseña es: <strong>${user.password}</strong></h4>
+                        <p>                          
+                          <a href="http://localhost:3000/login/">LOGIN</a>
+                        </p>
+                    `
+              }, ( error, info ) => {
+                  //winston.info( error, info );
+              } );
+          }
+
+      }
+  ).catch( console.error )
+
+} );
+
+
+
 
 // para poder emplearlo:
 module.exports = router;
