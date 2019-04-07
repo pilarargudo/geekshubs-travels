@@ -16,8 +16,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "express-toastr": "^2.0.2",
     "hbs": "^4.0.3",
     "hbs-utils": "0.0.4",
     "lodash": "^4.17.11",

@@ -6,7 +6,6 @@
               <h2 class="mdl-card__title-text">Registro</h2>
           </div>
           
-
           <!-- validaciones desde servidor -->
           {{#if message}}
            <div class="alert alert-success" role="alert">
@@ -22,12 +21,6 @@
                     {{error}}
                 </div>
            {{/if}}
-
-
-            <!-- demo show toast -->
-              {{!-- <button id="demo-show-toast" 
-                  class="mdl-button mdl-js-button mdl-button--raised" 
-                      type="button">Show Toast</button> --}}
 
           <form id="form-register" action="/register" method="POST">
             <div class="mdl-card__supporting-text">

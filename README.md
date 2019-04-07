@@ -38,6 +38,9 @@ Por ello nos hemos puesto en contacto con un diseñador y nos han pasado el sigu
 - flexbox
 - express
 - express-sessions
+- express-toastr https://www.npmjs.com/package/express-toastr
+- express-flash
+- cookie-parser
 - mongoose
 - lodash
 - morgan

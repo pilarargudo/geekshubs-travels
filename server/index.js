@@ -6,6 +6,43 @@ require('./config/nodemailer.js');
 
 // nos creamos nuestro servidor de express
 const express = require('express');
+// Dependencies
+const session = require('express-session');
+const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
+// express-toastr
+const toastr = require('express-toastr');
+
+// Initialize ExpressJS
+const app = express();
+
+// Dependencies
+app.use(cookieParser('secret'));
+//Gestión de la sesión.
+app.use(session({
+  // Clave con la que se va a firmar el ID de las cookies
+  secret: '1234',
+  // Nombre de la cookie
+  name: 'register-demo',
+  // Si se debe reguardar el objeto completo o no en cada petición.
+  resave: true,
+  // Si la sesión se debe guardar al crearla aunque no la modifiquemos.
+  saveUninitialized: true
+  }));
+app.use(flash());
+
+// Load express-toastr
+// You can pass an object of default options to toastr()
+app.use(toastr({
+  closeButton: true
+}));
+
+// express-toast middleware
+app.use(function (req, res, next)
+{
+    res.locals.toasts = req.toastr.render()
+    next()
+});
 
 var path = require('path');
 
@@ -30,27 +67,8 @@ const profileRouter = require('./routes/profile');
 
 const PORT = process.env.PORT || 3000;
 
-const app = express();
-
-
-var session = require('express-session');
-
-//Gestión de la sesión.
-app.use(session({
-// Clave con la que se va a firmar el ID de las cookies
-secret: '1234',
-// Nombre de la cookie
-name: 'register-demo',
-// Si se debe reguardar el objeto completo o no en cada petición.
-resave: true,
-// Si la sesión se debe guardar al crearla aunque no la modifiquemos.
-saveUninitialized: true
-}));
-
 // sass middleware
-//var express = require('express');
 var sassMiddleware = require('node-sass-middleware');
-//var app = express();
 app.use(sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'sass'),

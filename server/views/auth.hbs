@@ -13,7 +13,10 @@
     <!-- custom theme -->
     <link rel="stylesheet" type="text/css" href="/styles/theme.css">
     <link rel="stylesheet" type="text/css" href="/styles/ui-md-alerts.css">
-
+    <!-- toastr.min.css, jquery.min.js, toastr.min.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/css/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
   </head>
   <body class="auth {{page}}">
     <div class="mdl-layout mdl-js-layout">
@@ -40,14 +43,8 @@
         {{{body}}}
         
         <footer class="mdl-mega-footer">
-
-          <!-- TOAST validation messages -->
-          <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-            <div class="mdl-snackbar__text"></div>
-            <button class="mdl-snackbar__action" type="button"></button>
-          </div>
-
-          {{> footer}}
+          {{!-- {{ toasts }} --}}
+         {{> footer}}
         </footer>
       </main>
       <!-- scripts -->

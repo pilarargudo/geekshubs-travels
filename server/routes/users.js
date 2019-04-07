@@ -114,6 +114,17 @@ router.post( '/login', function ( req, res, next ) {
 // recovery con param email optativo
 router.get( '/recovery/:email?', function ( req, res, next ) {
 
+  
+  // req.toastr.info('Are you the 6 fingered man?');
+  //   req.toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', null, {
+  //     closeButton: false
+  //   });
+  //   req.toastr.success('Have fun storming the castle!', 'Miracle Max Says', null, {
+  //     newestOnTop: true
+  //   });
+  //   req.toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
+    //return res.end();
+
   res.render( 'recovery', { 
     ...loginData, 
     email: req.params.email 
@@ -121,23 +132,29 @@ router.get( '/recovery/:email?', function ( req, res, next ) {
 } );
 
 router.post( '/recovery/', function ( req, res, next ) {
-
+  
   //winston.info( 'email to recovery:', req.body.email );
 
   User.findOne( { email: req.body.email } ).then(
       ( user ) => {
           
-          if ( !user ) {
+          if ( !user ) {    
+
+            // TODO toastr
+            //req.toastr.info('Are you the 6 fingered man?')
+
             res.render( 'recovery', { 
               ...loginData, 
               error: 'Ups! Por favor, revisa tu correo electrónico.' 
-            } );
+            } );                    
           }
+
+
           else{
             // TODO redirect home y mostrar mensaje en el toast
             res.render( 'recovery', { 
               ...loginData, 
-              message: 'Si el email estaba registrado le enviaremos un email con su contraseña.' 
+              //message: 'Si el email estaba registrado le enviaremos un email con su contraseña.' 
             } );
 
             gmail.transporter.sendMail( {
